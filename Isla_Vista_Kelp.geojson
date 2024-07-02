@@ -1,0 +1,8 @@
+{
+"type": "FeatureCollection",
+"name": "Isla Vista Kelp.kmz",
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
+"features": [
+{ "type": "Feature", "properties": { "Name": "Isla Vista Kelp" }, "geometry": { "type": "Polygon", "coordinates": [ [ [ -119.886327017395004, 34.396819110469501 ], [ -119.839922297616994, 34.395598221865598 ], [ -119.839250074044003, 34.413440309070602 ], [ -119.839166065571007, 34.413755851452997 ], [ -119.886010166302, 34.414341429739302 ], [ -119.886327017395004, 34.396819110469501 ] ] ] } }
+]
+}
