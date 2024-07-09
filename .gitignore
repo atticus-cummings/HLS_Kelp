@@ -2,3 +2,4 @@
 *.tif
 /imagery/*
 *.png
+HLS_Kelp/random_forest/*
