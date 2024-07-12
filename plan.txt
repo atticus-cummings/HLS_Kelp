@@ -1,0 +1,35 @@
+RF training classification:
+- Create DEM mask 
+- use Fmask to mask out clouds 
+- Use Kmeans to differentiate ocean from kelp
+- Create classification mask with:
+    kelp = 0
+    ocean = 1
+    clouds = 2
+    land = 3
+Output combined file with  
+    Bands B02, B03, 4, 5, 6, 7
+    Classification mask 
+
+RF prediction preprocessing:
+- Create DEM mask
+- Mask out clouds
+    Clouds and land = [0]
+export tif with:
+    bands B02, B03, B04, B05, B06, B07 (land and clouds masked)
+
+RF Classifier:
+ - Open masked 4-band tif file
+ - Run Classifier
+ - Delete preprocessed image
+ - Save image with:
+    B02, B03, B04, B05
+    Classification mask
+
+MESMA density prediction
+ - Open 5-band tif
+ - Create dictionary of kelp pixel location to kelp pixel values
+ - Create array 4-band*pixel #s of ocean end-members
+    - Randomly select 30-ish
+    - Dialate land mask first? 
+    

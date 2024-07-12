@@ -8,6 +8,7 @@ from osgeo import gdal
 import json
 import csv
 import earthaccess
+from contextlib import redirect_stdout
 
 earthaccess.login(persist=True)
 
@@ -72,8 +73,9 @@ for i, granule in enumerate(results):
     file_path = os.path.join(tile_path,folder_name)
     if not os.path.isdir(file_path):
         os.mkdir(file_path) #Make folder for granule 
+    with open(os.devnull, 'w') as f, redirect_stdout(f):
+        downloadPath = earthaccess.download(granule, local_path=file_path, threads=10)
 
-    downloadPath = earthaccess.download(granule, local_path=file_path)
     csv_file = os.path.join(file_path, (f'{folder_name}_metadata.csv'))
     metadata_full_dict = {**attributes, **meta}
     metadata_full_dict['data_vis_url'] = granule.dataviz_links()
