@@ -32,4 +32,6 @@ MESMA density prediction
  - Create array 4-band*pixel #s of ocean end-members
     - Randomly select 30-ish
     - Dialate land mask first? 
+
+
     
