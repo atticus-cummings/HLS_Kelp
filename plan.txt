@@ -33,5 +33,7 @@ MESMA density prediction
     - Randomly select 30-ish
     - Dialate land mask first? 
 
+    install coops for 
+
 
     
