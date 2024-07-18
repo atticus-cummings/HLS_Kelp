@@ -33,7 +33,21 @@ MESMA density prediction
     - Randomly select 30-ish
     - Dialate land mask first? 
 
-    install coops for 
+    install coops for tidal map?
+
+
+    Questions For Tom:
+
+    How should I process from here?
+        - Estimating kelp biomass
+            Add up kelp pixel values?
+    Processing process:
+        - Dialating kelp mask slightly
+        - Running mesma only on kelp vs whole image
+        - Fixing error in RF
+        - Case where ocean mask was too small 
+    Is my mesma correct? What do each of the 30 layers represent?
+
 
 
     
