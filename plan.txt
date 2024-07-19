@@ -47,7 +47,9 @@ MESMA density prediction
         - Fixing error in RF
         - Case where ocean mask was too small 
     Is my mesma correct? What do each of the 30 layers represent?
-
+https://sbclter.msi.ucsb.edu/data/catalog/package/?package=knb-lter-sbc.2005
+isla vista: NAP https://sbclter.msi.ucsb.edu/data/catalog/package/?package=knb-lter-sbc.2002
+East of Isla Vista MKO: https://sbclter.msi.ucsb.edu/data/catalog/package/?package=knb-lter-sbc.2007
 
 
     
