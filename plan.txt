@@ -51,7 +51,7 @@ https://sbclter.msi.ucsb.edu/data/catalog/package/?package=knb-lter-sbc.2005
 isla vista: NAP https://sbclter.msi.ucsb.edu/data/catalog/package/?package=knb-lter-sbc.2002
 East of Isla Vista MKO: https://sbclter.msi.ucsb.edu/data/catalog/package/?package=knb-lter-sbc.2007
 
-
+9411340 Santa Barbara
 
 
     
@@ -59,4 +59,7 @@ Drop mesma <13
 Look at differences between landsat and sentinel 2 sensors?
 Look at differences in number of classified pixels 
 Compare landsat vs sentinel 2 pixels 
+
+
+Analyze images with 0% cloud cover 
 

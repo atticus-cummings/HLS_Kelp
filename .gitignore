@@ -3,3 +3,8 @@
 /imagery/*
 *.png
 /random_forest/*
+/python_objects/*
+/maps/*
+*.kmz
+*kml
+/lter_data/*

@@ -17,6 +17,7 @@ import time
 
 import sys
 import pickle
+import csv
 import cupy as cp
 import random
 
@@ -30,6 +31,9 @@ import random
 #     files = os.listdir(img_path)
 #     return img_path, granule, files
 
+def get_sensor(granule):
+    file_data = granule.split('.')
+    return file_data[1]
 
 def get_sensor_bands(granule):
     file_data = granule.split('.')
@@ -43,12 +47,6 @@ def load_rf(rf_path):
     with open(rf_path, 'rb') as f:
         cu_rf = pickle.load(f)
     return cu_rf
-
-def get_band_index(filename):
-    match = re.search(r'\.(B\d{2}|B8A)\.tif$', filename)
-    if match:
-        return sensor_bands.index(match.group(1))
-    return -1
 
 def filter_and_sort_files(img_path, granule):
     # Split the granule to get the sensor information
@@ -77,8 +75,6 @@ def filter_and_sort_files(img_path, granule):
     sorted_files = sorted(final_files, key=sort_key)
     
     return sorted_files
-
-
 
 def valid_granule(img_files, sensor_bands, files, item):
     f_mask = [f for f in files if re.search(r'Fmask\.tif$', f)]
@@ -151,7 +147,7 @@ def reproject_dem_to_hls(hls_path, dem_path='/mnt/c/Users/attic/HLS_Kelp/imagery
             else:
                 return False
 
-def generate_land_mask(reprojected_dem, land_dilation=5, show_image=False):
+def generate_land_mask(reprojected_dem, land_dilation=7, show_image=False):
     if reprojected_dem.any():
         struct = cp.ones((land_dilation, land_dilation))
         reprojected_dem_gpu = cp.asarray(reprojected_dem)
@@ -252,7 +248,7 @@ def normalize_img(img, flatten=True):
     return img_2D_nor
    
 
-def select_ocean_endmembers(ocean_mask, print_average=False, n=30, min_pixels=500):
+def select_ocean_endmembers(ocean_mask, print_average=False, n=30, min_pixels=1000):
     ocean_EM_n = 0
     ocean_data = ocean_mask.reshape(ocean_mask.shape[0], -1)
     nan_columns = cp.isnan(ocean_data).any(axis=0)  # Remove columns with nan 
@@ -315,3 +311,13 @@ def run_mesma(kelp_mask, ocean_EM, n=30, kelp_EM=[459, 556, 437, 1227]):
     return Mes2, minVals
 
 
+def get_metadata(path, files=None):
+    if files==None:
+        files = os.listdir(path)
+    metadata_file = [f for f in files if re.search(r'metadata\.csv$', f)]
+    if metadata_file:
+        with open(os.path.join(path, metadata_file[0]), mode='r') as file:
+            csv_reader = csv.reader(file)
+            keys = next(csv_reader)  
+            values = next(csv_reader) 
+        return dict(zip(keys, values))
